@@ -44,6 +44,22 @@
               "scheduled": true
             }
           },
+          {
+            "name": "1.6-otp-21",
+            "annotations": {
+              "description": "Build and run Elixir 1.6 OTP 21 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.6,elixir:1,elixir,erlang:21,erlang,distillery",
+              "version": "1.6-otp-21"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.6-otp-21"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
         ]
       }
     }
