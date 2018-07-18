@@ -1,0 +1,14 @@
+#!/bin/bash -e
+#
+# S2I run script for the erlang builder.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [ "$ENABLE_DISTILLERY" = "1" ]; then
+  exec _build/prod/rel/$DISTILLERY_APP_NAME/bin/$DISTILLERY_APP_NAME foreground
+else
+  exec mix
+fi

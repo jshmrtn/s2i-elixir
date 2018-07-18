@@ -1,0 +1,51 @@
+
+{
+  "kind": "ImageStreamList",
+  "apiVersion": "v1",
+  "metadata": {},
+  "items": [
+    {
+      "kind": "ImageStream",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "elixir"
+      },
+      "spec": {
+        "tags": [
+          {
+            "name": "1.6",
+            "annotations": {
+              "description": "Build and run Elixir 1.6 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.6,elixir:1,elixir,erlang,distillery",
+              "version": "1.6"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.6"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "1.6-otp-20",
+            "annotations": {
+              "description": "Build and run Elixir 1.6 OTP 20 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.6,elixir:1,elixir,erlang:20,erlang,distillery",
+              "version": "1.6-otp-20"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.6-otp-20"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+        ]
+      }
+    }
+  ]
+}
