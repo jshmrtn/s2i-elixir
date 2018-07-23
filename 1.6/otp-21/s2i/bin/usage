@@ -10,7 +10,7 @@ s2i build git://<source code> elixir-builder <application image>
 You can then run the resulting image via:
 docker run <application image>
 
-If the Environment Variables `ENABLE_DISTILLERY` and
-`DISTILLERY_APP_NAME` are provided, the image will build
-and run with distillery.
+If the Environment Variable `ENABLE_DISTILLERY` is present, the image
+will built using distillery. The resulting release should be copied
+into a clean base image and run from there.
 EOF

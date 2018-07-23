@@ -13,19 +13,18 @@ if [[ "$1" == "-h" ]]; then
 fi
 
 # Restore artifacts from the previous build (if they exist).
-#
 if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
   echo "---> Restoring build artifacts..."
   mv /tmp/artifacts/. ./
 fi
 
-echo "---> Installing application source..."
-cp -Rf /tmp/src/. ./
+if [ "$(ls /tmp/src/ 2>/dev/null)" ]; then
+  echo "---> Installing application source..."
+  cp -Rf /tmp/src/. ./
+fi
 
 echo "---> Building application from source..."
 
-mix local.hex --force
-mix local.rebar --force
 mix deps.get --only prod
 mix deps.compile
 mix compile
@@ -35,6 +34,6 @@ if [ "$ENABLE_DISTILLERY" = "1" ]; then
 fi
 
 echo "---> Set permissions on static dir..."
-fix-permissions /opt/app-root/src
+fix-permissions "$HOME"
 
 echo "---> Completed"

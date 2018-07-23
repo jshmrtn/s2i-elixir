@@ -43,7 +43,9 @@ RUN set -x \
     ncurses-devel \
     openssl-devel \
     wxBase \
-  && yum clean all -y
+  && yum clean all -y \
+  && mix local.hex --force \
+  && mix local.rebar --force
 
 # Copy the S2I scripts from the image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
@@ -51,6 +53,8 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root && chmod -R ug+rwx /opt/app-root
 USER 1001
+
+ENV MIX_ENV prod
 
 # Set the default CMD to print the usage of the language image
 CMD $STI_SCRIPTS_PATH/usage

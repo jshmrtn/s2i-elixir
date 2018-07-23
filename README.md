@@ -46,10 +46,11 @@ To build an Elixir image:
 
 ### Distillery
 
-The image support to be used via [`distillery`](https://github.com/bitwalker/distillery).
+The image supports to be used via [`distillery`](https://github.com/bitwalker/distillery).
 
-To use distillery, set the environment variable `ENABLE_DISTILLERY` to `1` and
-`DISTILLERY_APP_NAME` to the application name.
+If the Environment Variable `ENABLE_DISTILLERY` is present, the image
+will built using distillery. The resulting release should be copied
+into a clean base image and run from there.
 
 ## Local Usage
 

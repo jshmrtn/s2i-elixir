@@ -8,7 +8,9 @@
 #
 
 if [ "$ENABLE_DISTILLERY" = "1" ]; then
-  exec _build/prod/rel/$DISTILLERY_APP_NAME/bin/$DISTILLERY_APP_NAME foreground
+  echo "This Image should only be used in Multi Stage Builds"
+  echo "The resulting release should be copied into a new clean image and called from there."
+  exit 1
 else
   exec mix
 fi
