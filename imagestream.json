@@ -13,6 +13,70 @@
       "spec": {
         "tags": [
           {
+            "name": "latest",
+            "annotations": {
+              "description": "Build and run Elixir applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1,elixir,erlang,distillery",
+              "version": "latest"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:latest"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "1.7",
+            "annotations": {
+              "description": "Build and run Elixir 1.7 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.7,elixir:1,elixir,erlang,distillery",
+              "version": "1.7"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.7"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "1.7-otp-20",
+            "annotations": {
+              "description": "Build and run Elixir 1.7 OTP 20 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.7,elixir:1,elixir,erlang:20,erlang,distillery",
+              "version": "1.7-otp-20"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.7-otp-20"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
+            "name": "1.7-otp-21",
+            "annotations": {
+              "description": "Build and run Elixir 1.7 OTP 21 applications",
+              "tags": "builder,elixir,erlang,distillery",
+              "supports": "elixir:1.7,elixir:1,elixir,erlang:21,erlang,distillery",
+              "version": "1.7-otp-21"
+            },
+            "from": {
+              "kind": "DockerImage",
+              "name": "jshmrtn/s2i-elixir:1.7-otp-21"
+            },
+            "importPolicy": {
+              "scheduled": true
+            }
+          },
+          {
             "name": "1.6",
             "annotations": {
               "description": "Build and run Elixir 1.6 applications",
@@ -59,7 +123,7 @@
             "importPolicy": {
               "scheduled": true
             }
-          },
+          }
         ]
       }
     }

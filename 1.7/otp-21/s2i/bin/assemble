@@ -1,0 +1,39 @@
+#!/bin/bash -e
+#
+# S2I assemble script for erlang images
+#
+# For more information refer to the documentation:
+# https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [[ "$1" == "-h" ]]; then
+  # If the assemble script is executed with '-h' flag,
+  # print the usage.
+  exec /usr/libexec/s2i/usage
+fi
+
+# Restore artifacts from the previous build (if they exist).
+if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
+  echo "---> Restoring build artifacts..."
+  mv /tmp/artifacts/. ./
+fi
+
+if [ "$(ls /tmp/src/ 2>/dev/null)" ]; then
+  echo "---> Installing application source..."
+  cp -Rf /tmp/src/. ./
+fi
+
+echo "---> Building application from source..."
+
+mix deps.get --only prod
+mix deps.compile
+mix compile
+
+if [ "$ENABLE_DISTILLERY" = "1" ]; then
+  mix release --env=prod
+fi
+
+echo "---> Set permissions on static dir..."
+fix-permissions "$HOME"
+
+echo "---> Completed"
