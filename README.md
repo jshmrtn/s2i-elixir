@@ -13,9 +13,11 @@ Documentation](https://docs.openshift.org/latest/architecture/core_concepts/buil
 
 Erlang versions currently provided are:
 
-* `1.7.4` (Tags: `1`, `1.7`, `latest`)
+* `1.8.1` (Tags: `1`, `1.8`, `latest`)
+  * OTP `21`
+* `1.7.4` (Tags: `1.7`)
   * OTP `20` / `21`
-* `1.6.6` (Tags: `1`, `1.6`)
+* `1.6.6` (Tags: `1.6`)
   * OTP `20` / `21`
 
 CentOS versions currently supported are:

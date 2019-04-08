@@ -1,0 +1,16 @@
+#!/bin/bash -e
+#
+# S2I run script for the erlang builder.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [ "$ENABLE_DISTILLERY" = "1" ]; then
+  echo "This Image should only be used in Multi Stage Builds"
+  echo "The resulting release should be copied into a new clean image and called from there."
+  exit 1
+else
+  exec mix
+fi
